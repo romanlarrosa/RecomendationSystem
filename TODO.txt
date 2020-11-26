@@ -7,3 +7,9 @@
 Links:
 
 Leer csv en java: https://www.campusmvp.es/recursos/post/como-leer-y-escribir-archivos-csv-con-java.aspx
+
+3 Modulos:
+- Generacion de peliculas: generar 20 peliculas para que los vote
+- Ratings del usuario y Ratings del resto: calcular pearson de cada usuario con respecto al activo
+- Nos quedamos con los usuario con un pearson mas alto, los localizamos y vemos que peliculas han visto los cinco y el usuario activo no ha visto
+-Procedemos a la recomendación de dichas películas.
