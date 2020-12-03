@@ -1,7 +1,6 @@
 1. Leer los datos del csv y hacer una estructura para guardar los datos.
 2. Enseñar 20 películas aleatorias y decir que las puntue del 1 a 5
 3. Guardarlo en la estructura.
-3.1 Guardarlo en el csv??
 3. Calcular los 5 vecinos más cercanos y recomendar alguna película.
 
 Links:
