@@ -16,7 +16,7 @@ public class listaPeliculas {
     listaPeliculas() throws CsvValidationException, IOException {
 
         lista = new ArrayList<>();
-        r = new Random()
+        r = new Random();
         
         // Leer las peliculas
         archivo = "./files/movies.csv";
