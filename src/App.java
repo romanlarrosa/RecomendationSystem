@@ -185,8 +185,7 @@ public class App {
             }
         }
 
-        // TODO solucionar el problema de si el usuario vota todo igual
-        if(raizI == 0){
+        if(raizI == 0 || raizD == 0){
             //Calcular sin ajustar
             arriba = raizD = raizI = 0.0;
             for (int i = 0; i < listaAleatoria.size(); i++) {
