@@ -47,8 +47,7 @@ public class App {
                     }
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("Lo sentimos, no tenemos ninguna película que recomendarle");
         }
 
@@ -60,12 +59,16 @@ public class App {
         ArrayList<Integer> ret = new ArrayList<>();
 
         for (int i = 0; i < ratings.numPelis; i++) {
-            if (ratings.calificaciones[ratings.numUsuarios][i] != -1) {
+            if (ratings.calificaciones[ratings.numUsuarios][i] == -1) {
                 double arriba = 0;
                 double abajo = 0;
 
                 for (int j = 0; j < vecinosCercanos.size(); j++) {
                     if (ratings.calificaciones[vecinosCercanos.get(j)][i] != -1) {
+                        // System.out.println("La nota del usuario es " +
+                        // ratings.calificaciones[vecinosCercanos.get(j)][i]);
+                        // System.out.println("El coeficiente pearson es " +
+                        // pearson.get(vecinosCercanos.get(j)));
                         double cof_pearson = pearson.get(vecinosCercanos.get(j));
                         double valoracion = ratings.calificaciones[vecinosCercanos.get(j)][i];
                         arriba += (cof_pearson * valoracion);
@@ -75,6 +78,7 @@ public class App {
 
                 if (abajo != 0) {
                     double r = arriba / abajo;
+                    // System.out.println("El r es: " + r);
                     if (r >= 4.0) {
                         ret.add(i);
                     }
@@ -86,7 +90,7 @@ public class App {
         return ret;
     }
 
-    static void ordenar() {
+    private static void ordenar() {
         boolean flag = false;
         while (flag) {
             flag = false;
@@ -107,7 +111,7 @@ public class App {
         }
     }
 
-    static void puntuar() {
+    private static void puntuar() {
         // Enseñarle al usuario las peliculas y decirle que vote
         listaAleatoria = lista.generarPeliculas();
 
@@ -152,7 +156,7 @@ public class App {
         mediaUsuario = mediaUsuario / 20;
     }
 
-    static double CoeficientePearson(int idVecino, double media) {
+    private static double CoeficientePearson(int idVecino, double media) {
         double coeficiente;
         double mediaVecino = 0;
         int n = 0; // Cuantas peliculas ha calificado el vecino
@@ -170,6 +174,7 @@ public class App {
             mediaVecino = mediaVecino / n;
         } else {
             mediaVecino = Double.NEGATIVE_INFINITY;
+            return mediaVecino;
         }
 
         for (int i = 0; i < listaAleatoria.size(); i++) {
@@ -185,8 +190,8 @@ public class App {
             }
         }
 
-        if(raizI == 0 || raizD == 0){
-            //Calcular sin ajustar
+        if (raizI == 0 || raizD == 0) {
+            // Calcular sin ajustar
             arriba = raizD = raizI = 0.0;
             for (int i = 0; i < listaAleatoria.size(); i++) {
                 // Contar solo si el usuario idVecino ha votado la pelicula
@@ -194,15 +199,16 @@ public class App {
                 if (ratings.calificaciones[idVecino][idPelicula] != -1) {
                     double votoVecino = ratings.calificaciones[idVecino][idPelicula];
                     double votoUsuario = ratings.calificaciones[ratings.numUsuarios][idPelicula];
-    
-                    arriba += (votoUsuario ) * (votoVecino );
-                    raizI += Math.pow((votoUsuario ), 2);
-                    raizD += Math.pow((votoVecino ), 2);
+
+                    arriba += (votoUsuario) * (votoVecino);
+                    raizI += Math.pow((votoUsuario), 2);
+                    raizD += Math.pow((votoVecino), 2);
                 }
             }
 
         }
         coeficiente = arriba / (Math.sqrt(raizI) * Math.sqrt(raizD));
+        //System.out.println("El coeficiente es: " + coeficiente);
 
         return coeficiente;
     }
