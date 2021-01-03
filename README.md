@@ -1,6 +1,8 @@
+# Recommendation System
 
-The workspace contains two folders by default, where:
+El directorio de trabajo muestra la siguiente estructura
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `src`: el directorio con el codigo generado
+- `lib`: el directorio con las librerías necesarias
+- `doc`: el directorio con los documentos derivados de la creación del proyecto y su presentación
 
